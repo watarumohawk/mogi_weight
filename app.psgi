@@ -6,6 +6,8 @@ get '/' => sub {
 
 	my $q = shift;
 
-	$q->render(templates => 'index');
+	$q->render(template => 'index');
 
 };
+
+app->start;
