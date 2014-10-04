@@ -1,0 +1,1 @@
+requres 'Mojolicious::Lite', '4.94';
