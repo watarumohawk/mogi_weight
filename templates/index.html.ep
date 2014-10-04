@@ -21,7 +21,7 @@
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#">Top</a>
+						<a class="navbar-brand" href="http://projects.watarusekiguchi.com">Wataru's Projects</a>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 				</div><!-- /.container-fluid -->
@@ -48,6 +48,7 @@
 	  		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.cursor.min.js"></script>
 	  		<link rel="stylesheet" type="text/css" href="./assets/jqPlot/jquery.jqplot.min.css">
 	  		<script language="javascript" type="text/javascript" src="./js/graph.js"></script>
+	  		<script language="javascript" type="text/javascript" src="./assets/footer.js"></script>
 		</div>	
 	</body>
 </html>
