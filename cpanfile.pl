@@ -1,3 +1,1 @@
-#! /usr/bin/perl
-
-requires 'Mojolicious', 3;
+requires 'Mojolicious', '4.94';
