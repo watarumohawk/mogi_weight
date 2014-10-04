@@ -2,4 +2,10 @@
 
 use Mojolicious::Lite;
 
-app->start;
+get '/' => sub {
+
+	my $q = shift;
+
+	$q->render(templates => 'index');
+
+};
