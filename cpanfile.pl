@@ -1,1 +1,1 @@
-requres 'Mojolicious/Lite.pm', '4.94';
+requres 'Mojolicious::Lite', '==4.94';
