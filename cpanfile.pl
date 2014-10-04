@@ -1,1 +1,1 @@
-requires 'Mojolicious::Lite', '==4.94';
+requires 'Mojolicious', '4.94';
