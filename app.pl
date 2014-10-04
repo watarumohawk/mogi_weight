@@ -2,7 +2,12 @@
 
 use Mojolicious::Lite;
 
-	get '/' => {text => 'Hello World!'};
+get '/' => sub {
 
+	my $q = shift;
+
+	$q->render(template => 'index');
+
+};
 
 app->start;
