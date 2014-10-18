@@ -34,7 +34,7 @@ function render_graph(data) {
             // the legend to overflow the container.
             /*legend:{  
                 show:true,
-        },*/
+            },*/
         // Custom labels for the series are specified with the "label"
         // option on the series option.  Here a series option object
         // is specified for each series.

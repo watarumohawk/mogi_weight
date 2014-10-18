@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>茂木健一郎の体重推移グラフ</title>
+		<title>編集画面</title>
 		<!-- Bootstrap -->
 		<link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -27,20 +27,22 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 				</div><!-- /.container-fluid -->
 			</nav>
-	  		<div id="graph_area"></div>
-	  		<br>
-	  		<p>グラフは茂木さんのTwitter（<a href="https://twitter.com/kenichiromogi">@kenichiromogi</a>）に投稿された数値で作成しています。</p>	  		
+			<div id="input_area">
+				<input>
+			</div>
 		</div>
-		<script type="text/javascript" src="./assets/jquery-1.9.1.js"></script>	
-		<script language="javascript" type="text/javascript" src="./assets/jqPlot/jquery.jqplot.min.js"></script>
-		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.canvasTextRenderer.min.js"></script>
-		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
-		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
-		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.dateAxisRenderer.min.js"></script>
-		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.highlighter.min.js"></script>
-		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.cursor.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="./assets/jqPlot/jquery.jqplot.min.css">
+		<!-- required scripts -->
+  		<script type="text/javascript" src="./assets/jquery-1.9.1.js"></script>
+  		<script language="javascript" type="text/javascript" src="./assets/jqPlot/jquery.jqplot.min.js"></script>
+  		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+  		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+  		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+  		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+  		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.highlighter.min.js"></script>
+  		<script language="javascript" type="text/javascript" src="./assets/jqPlot/plugins/jqplot.cursor.min.js"></script>
+  		<link rel="stylesheet" type="text/css" href="./assets/jqPlot/jquery.jqplot.min.css">
   		<script language="javascript" type="text/javascript" src="./js/graph.js"></script>
   		<script language="javascript" type="text/javascript" src="./assets/footer.js"></script>
+  		<!-- required scripts END-->
 	</body>
 </html>

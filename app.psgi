@@ -2,9 +2,15 @@ use Mojolicious::Lite;
 
 get '/' => sub {
 
-	my $q = shift;
+	my $self = shift;
 
-	$q->render(template => 'index');
+	$self->render(template => 'index');
+};
+
+get '/edit' => sub {
+  my $self = shift;
+
+  $self->render(template => 'edit');
 };
 
 app->start;
