@@ -1,0 +1,9 @@
+<!-- DatePicker 必ず必要-->
+<link rel="stylesheet" href="./assets/jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+<script src="./assets/jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+<script src="./assets/jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+<script src="./assets/jquery-ui-1.10.3/ui/jquery.ui.datepicker.js"></script>
+<!-- DatePicker オプション -->
+<script src="./assets/jquery-ui-1.10.3/ui/i18n/jquery.ui.datepicker-ja.js"></script>
+<link rel="stylesheet" href="./assets/jquery-ui-1.10.3/themes/smoothness/jquery.ui.theme.css">
+<!-- DatePicker ここまで-->
