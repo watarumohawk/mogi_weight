@@ -19,7 +19,7 @@ if( -d $dir ){
 	say "[ $dir ] dir OK";
 }else{
 	say 'mkdir [ $dir ]';
-	mkdir $dir || die $!;	
+	mkdir $dir || die $!;
 	say  "[ $dir ] dir is made";
 }
 

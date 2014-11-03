@@ -27,12 +27,12 @@ function latest_weight(data) {
 function render_graph(data) {
     var plot = $.jqplot("graph_area", [data],
         {
-            title:'茂木健一郎の体重推移', 
+            title:'茂木健一郎の体重推移',
             // Show the legend and put it outside the grid, but inside the
             // plot container, shrinking the grid to accomodate the legend.
             // A value of "outside" would not shrink the grid and allow
             // the legend to overflow the container.
-            /*legend:{  
+            /*legend:{
                 show:true,
             },*/
         // Custom labels for the series are specified with the "label"

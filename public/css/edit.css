@@ -4,3 +4,35 @@
     opacity: 1;
     filter:Alpha(Opacity=100);
 }
+
+#new_data_table td {
+	border-top: none;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+}
+
+.overlayText{
+	font-size: 20px;
+	color: #eee;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+#loading-img{
+	vertical-align:middle;
+	margin: 70px;
+	width:8%;
+	height:10%;
+	line-height:10%; /* heightと同じ値 */
+	text-align:center;
+}

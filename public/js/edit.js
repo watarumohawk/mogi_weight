@@ -1,4 +1,7 @@
+// var path = getPath();
+
 $(function(){
+    var mode = $.getUrlVar("mode");
 
 	/* DatePicker */
     // ボタン表示と月曜始まり
@@ -22,15 +25,27 @@ $(function(){
     		// 値が両方入力されている時に通信
 	    	$.ajax({
 	    		type: "GET",
-	    		url: "",
+	    		url: "./save_json",
 	    		dataType: "json",
-	    		data: {param1: 'value1'},
-	    		success: function() {
-
-	    		},
-	    		error: function() {
-		            alert("Server Error. Pleasy try again later. edit.js save");
-	    		}
+	    		data: {mode: "save", date: date_val, weight: weight_val},
+	    		success: function(json_data) { // result:success で成功
+                    $("#sendingTextArea").fadeIn();
+                    console.log(json_data);
+                    // 返ってきたjson_dataのresultがsuccessの場合に保存完了メッセージ
+                    if (json_data.result != "success") { // サーバが失敗を返した場合
+                       alert("Transaction error. ");
+                       return;
+                    }
+                    // 成功時処理
+                    if(mode == "retrieve" && former_date !== current_date){ // 日付変更してデータ更新する場合
+                        deleteDay(former_day);
+                    }
+                    trans();
+                    $("#loader_div").remove();
+                },
+                error: function() { // HTTPエラー時
+                    alert("Server Error. Pleasy try again later. edit.js save");
+                }
 	    	});
     	} else if ( date_val == "" ) {
     		alert("日付を入力して下さい。");
@@ -40,10 +55,20 @@ $(function(){
     		alert("日付と体重を入力して下さい。");
     	}
     });
-
 });
 
-//今日の日付を最初から「日付：」に入力
+function getPath(){
+    var path = window.location.href;
+    if(path.match(/app\.psgi/)){
+        path = path.replace(/(app\.psgi)(\/)(.*)/, "$1");
+    }else if(path.match(/localhost/)){
+        path = ".";
+    }
+    // console.log(path);
+    return path;
+}
+
+// 今日の日付を最初から「日付：」に入力
 function showToday(){
     var now = new Date();
     var year = now.getFullYear();
@@ -64,4 +89,20 @@ function showToday(){
     }
 }
 
-
+// ref: http://jquery-howto.blogspot.jp/2009/09/get-url-parameters-values-with-jquery.html
+$.extend({
+  getUrlVars: function(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  },
+  getUrlVar: function(name){
+    return $.getUrlVars()[name];
+  }
+});
