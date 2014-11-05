@@ -17,16 +17,8 @@
 	</head>
 	<body>
 		<div class="container">
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<a class="navbar-brand" href="http://projects.watarusekiguchi.com">Wataru's Projects</a>
-						<a class="navbar-brand" href="./">Top</a>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-				</div><!-- /.container-fluid -->
-			</nav>
+			<%= include 'components/nav_include' %>
+
 	  		<div id="graph_area"></div>
 	  		<br>
 	  		<p>グラフは茂木さんのTwitter（<a href="https://twitter.com/kenichiromogi">@kenichiromogi</a>）に投稿された数値で作成しています。</p>
@@ -34,6 +26,6 @@
 		<script type="text/javascript" src="./assets/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
 		<%= include 'components/jqplot_include' %>
   		<script language="javascript" type="text/javascript" src="./js/graph.js"></script>
-  		<script language="javascript" type="text/javascript" src="./assets/footer.js"></script>
+  		<!-- <script language="javascript" type="text/javascript" src="./assets/footer.js"></script> -->
 	</body>
 </html>

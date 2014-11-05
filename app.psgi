@@ -31,9 +31,10 @@ any '/save_json' => sub {
 
 	use JSON;
 	my $q = $self;
-	my $dummy = { mode => $q->param('mode'), date => $q->param('date') ? $q->param('date') : undef , weight => $q->param('weight') };
-	my $post = $q->param('packed_data') ? $q->param('packed_data') : encode_json( $dummy ) ;
-	$output = $db->save( $post );
+	my $dummy = {date => $q->param('date') ? $q->param('date') : undef , weight => $q->param('weight') };
+	# my $post = $q->param('packed_data') ? $q->param('packed_data') : encode_json( $dummy ) ;
+	# $output = $db->save( $post );
+	$output = $db->save( encode_json($dummy) );
 	$self->render(json => $output);
 };
 

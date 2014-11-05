@@ -31,16 +31,16 @@ $(function(){
 	    		success: function(json_data) { // result:success で成功
                     $("#sendingTextArea").fadeIn();
                     console.log(json_data);
+                    console.log(json_data.result);
                     // 返ってきたjson_dataのresultがsuccessの場合に保存完了メッセージ
                     if (json_data.result != "success") { // サーバが失敗を返した場合
-                       alert("Transaction error. ");
+                       alert("Transaction error.");
                        return;
                     }
                     // 成功時処理
-                    if(mode == "retrieve" && former_date !== current_date){ // 日付変更してデータ更新する場合
+                    /*if(mode == "retrieve" && former_date !== current_date){ // 日付変更してデータ更新する場合
                         deleteDay(former_day);
-                    }
-                    trans();
+                    }*/
                     $("#loader_div").remove();
                 },
                 error: function() { // HTTPエラー時
