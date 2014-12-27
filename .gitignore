@@ -1,2 +1,2 @@
 #.gitignore
-/**/mogi_weight/db/mogi_weight.sqlite3
+/**/db/mogi_weight.sqlite3
