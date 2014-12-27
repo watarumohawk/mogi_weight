@@ -1,4 +1,4 @@
-#ckage Record;
+package Record;
 
 use strict;
 use warnings;
@@ -13,7 +13,7 @@ sub new{
 
 	my $data = {
 		date => $json->{date},
-		sum  => $json->{sum},
+		weight  => $json->{weight},
 		json_string => $json_string
 	};
 

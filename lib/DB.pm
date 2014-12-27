@@ -36,45 +36,45 @@ sub save{
 	}
 
 	# insert new data
-	my $query = "insert into $self->{table} (date, sum, json_string) values ( ?, ?, ?);";
+	my $query = "insert into $self->{table} (date, weight, json_string) values ( ?, ?, ?);";
 
 	$sth = $self->{dbh}->prepare( $query );
-	$sth->execute( $r->{date}, $r->{sum}, $r->{json_string} );
+	$sth->execute( $r->{date}, $r->{weight}, $r->{json_string} );
 
 	return { result => 'success', msg => $msg.'insert '.$r->{date}, db_perm => $self->{db_perm} };
 }
 
-sub sum_history{
+sub weight_history{
 	my $self = shift;
-	
-	my $query = "SELECT date, sum FROM $self->{table} ORDER BY date asc;";
+
+	my $query = "SELECT date, weight FROM $self->{table} ORDER BY date asc;";
 
 	my $sth = $self->{dbh}->prepare( $query );
 	$sth->execute;
 	#my $ref = $sth->fetchall_arrayref();
 
 	my $dates = [];
-	my $sums = [];
+	my $weights = [];
 	while( my $row = $sth->fetch ){
 		#print @row;
 		push @$dates, $row->[0];
-		push @$sums, $row->[1];
+		push @$weights, $row->[1];
 	}
 
-	return { date => $dates, sum => $sums };
+	return { date => $dates, weight => $weights };
 }
 
 sub saved_data_list{
 	my $self = shift;
-	
-	return $self->sum_history->{date};
+
+	return $self->weight_history->{date};
 }
 
 
 sub retrieve{
 	my $self = shift;
 	my $date = shift;
-	
+
 	return { result => 'date is not specified'} unless $date;
 	my $query = "SELECT * FROM $self->{table} WHERE date = ?;";
 
@@ -103,7 +103,7 @@ sub delete{
 sub disconnect{
 	my $self = shift;
 
-	$self->{dbh}->disconnect;	
+	$self->{dbh}->disconnect;
 }
 
 
@@ -121,7 +121,7 @@ sub create_table{
 	my $query = <<"EOS";
 create table $table_name (
 	date UNIQUE NOT NULL,
-	sum INT,
+	weight INT,
 	json_string
 )
 EOS

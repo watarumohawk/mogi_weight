@@ -17,8 +17,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<%= include 'components/nav_include' %>
-
+			<%= include 'components/admin_nav_include' %>
 			<table id='new_data_table' class='table table-condensed'>
 				<tr>
 					<td>

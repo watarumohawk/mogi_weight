@@ -2,39 +2,44 @@ $(function(){
     // グラフ
     $("#graph_area").attr("style", "height: 500px; width: 97%;");
 
-    $.ajax({
-        type:"GET",
-        url: "./json/weight.json",
-        dataType: "json",
-        success: function(json_data) {
-            render_graph(json_data);
-            // latest_weight(json_data);
-        },
-        error: function() {
-            alert("サーバーエラー");
-        }
-    });
+    renderGraph( $("#graph_area").attr("id") );
 
 });
 
-function latest_weight(data) {
+function renderGraph(chartId){
+    // 通信実行
+    var path = getPath();
 
-    // console.log( data.pop() );
-
-    $("#weight_table_tbody").append("<div>"+ data.pop() +"</div>");
+    $.ajax({
+        type:"POST",
+        url: path + "/weight_history_json",
+        data: {mode:"weight_history_json", bookvalue: 0},
+        dataType: "json",
+        success: function(json_data){
+            putDataInjqplot(chartId, json_data);
+                console.log(json_data);
+        },
+        error: function(){
+            alert("Server Error. Pleasy try again later.");
+        }
+    });
 }
 
-function render_graph(data) {
-    var plot = $.jqplot("graph_area", [data],
-        {
-            title:'茂木健一郎の体重推移',
-            // Show the legend and put it outside the grid, but inside the
-            // plot container, shrinking the grid to accomodate the legend.
-            // A value of "outside" would not shrink the grid and allow
-            // the legend to overflow the container.
-            /*legend:{
-                show:true,
-            },*/
+function putDataInjqplot(chart, data, data2){
+    var graph_data = [];
+    for(var i = 0; i<data.date.length; i++){
+        graph_data[i] = [ data.date[i], data.weight[i] ];
+    }
+
+    var plot1 = $.jqplot(chart, [graph_data], {
+        title:'茂木健一郎の体重推移',
+        // Show the legend and put it outside the grid, but inside the
+        // plot container, shrinking the grid to accomodate the legend.
+        // A value of "outside" would not shrink the grid and allow
+        // the legend to overflow the container.
+        legend:{
+            // show:true,
+        },
         // Custom labels for the series are specified with the "label"
         // option on the series option.  Here a series option object
         // is specified for each series.
@@ -43,14 +48,15 @@ function render_graph(data) {
             xaxis:{
                 renderer: $.jqplot.DateAxisRenderer,
                 tickOptions:{
-                    formatString:'%y/%m/%d'
+                    formatString:'%y.%m.%d'
                 },
             },
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             yaxis:{
+                min: 0,
                 tickOptions:{
-                    formatString:'%.1fkg',
+                    formatString:'%d'
                 }
             }
         },

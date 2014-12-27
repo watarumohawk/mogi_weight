@@ -13,20 +13,17 @@
 		      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		      <![endif]-->
-		<link rel="stylesheet" type="text/css" href="./css/index.css">
+		<link rel="stylesheet" type="text/css" href="./css/saved_data_list.css">
 	</head>
 	<body>
 		<div class="container">
-			<%= include 'components/nav_include' %>
-
-	  		<div id="graph_area"></div>
-	  		<br>
-	  		<p>グラフは茂木さんのTwitter（<a href="https://twitter.com/kenichiromogi">@kenichiromogi</a>）に投稿された数値で作成しています。</p>
+			<%= include 'components/admin_nav_include' %>
+			<ul id="saved_data_list">
+			</ul>
 		</div>
 		<script type="text/javascript" src="./assets/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
 		<%= include 'components/jqplot_include' %>
   		<script language="javascript" type="text/javascript" src="./js/common.js"></script>
-  		<script language="javascript" type="text/javascript" src="./js/graph.js"></script>
-  		<!-- <script language="javascript" type="text/javascript" src="./assets/footer.js"></script> -->
+  		<script language="javascript" type="text/javascript" src="./js/saved_data_list.js"></script>
 	</body>
 </html>
