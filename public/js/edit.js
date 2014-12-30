@@ -1,7 +1,9 @@
-// var path = getPath();
+var path = getPath();
+var former_date;
+var current_date;
 
 $(function(){
-    var mode = $.getUrlVar("mode");
+    var mode = $.url().param("mode");
 
 	/* DatePicker */
     // ボタン表示と月曜始まり
@@ -18,6 +20,24 @@ $(function(){
 
     showToday();
 
+    if(mode == "retrieve") {
+        retrieveData( $.url().param("date") );
+        $("#date_input").datepicker("option", "disabled", true);
+        $("#lock_img").attr("src", "../assets/img/locked.png");
+        $("#lock_img").addClass("locked_key");
+        $(".locked_key").on("click", function(){
+            var result = confirm("日付を変更しますか？");
+            if(result){
+                $("#date_input").datepicker("option", "disabled", false);
+                $("#lock_img").attr("src", "../assets/img/open.png");
+                // $("#lock_img").attr("class", "open_key");
+                $("#lock_img").removeClass("locked_key");
+                $("#lock_img").addClass("open_key");
+            }
+        });
+    }
+
+
     $("#new_data_submit").click(function() {
         var weight_val = $("#weight_input").val();
     	var date_val = $("#date_input").val();
@@ -31,13 +51,12 @@ $(function(){
     		// 値が両方入力されている時に通信
 	    	$.ajax({
 	    		type: "GET",
-	    		url: "./save_json",
+	    		url: path + "/save_json",
 	    		dataType: "json",
 	    		data: {mode: "save", date: date_val, weight: weight_val, packed_data:JSON.stringify(data)},
-	    		success: function(json_data) { // result:success で成功
-                    // $("#sendingTextArea").fadeIn();
+	    		success: function(json_data) {
+                    $("#sendingTextArea").fadeIn();
                     console.log(json_data);
-                    console.log(json_data.result);
                     // 返ってきたjson_dataのresultがsuccessの場合に保存完了メッセージ
                     if (json_data.result != "success") { // サーバが失敗を返した場合
                        alert("Transaction error.");
@@ -61,7 +80,31 @@ $(function(){
     		alert("日付と体重を入力して下さい。");
     	}
     });
+
+    former_date = $.url().param("date");
+    // 日付変更無い場合用
+    current_date = $.url().param("date");
 });
+
+function retrieveData(date){
+    // 変更後の日付
+    $("#date_input").change(function(){
+        current_date = $(this).val();
+    });
+
+    $.ajax({
+        type:"POST",
+        url: path + "/retrieve_json",
+        data: { mode: "retrieve", date: date },
+        dataType: "json",
+        success: function(json_data) {
+            $("#weight_input").val(json_data[2].weight);
+        },
+        error: function() { // HTTPエラー時
+            alert("Server Error. Pleasy try again later. edit.js retrieve");
+        }
+    });
+}
 
 function getPath(){
     var path = window.location.href;
@@ -70,7 +113,6 @@ function getPath(){
     }else if(path.match(/localhost/)){
         path = ".";
     }
-    // console.log(path);
     return path;
 }
 
@@ -83,21 +125,3 @@ function showToday(){
     var this_month = month + 1;
     $(".datepicker").val( sprintf("%04d/%02d/%02d", year, this_month, day) );
 }
-
-// ref: http://jquery-howto.blogspot.jp/2009/09/get-url-parameters-values-with-jquery.html
-$.extend({
-  getUrlVars: function(){
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-      hash = hashes[i].split('=');
-      vars.push(hash[0]);
-      vars[hash[0]] = hash[1];
-    }
-    return vars;
-  },
-  getUrlVar: function(name){
-    return $.getUrlVars()[name];
-  }
-});
