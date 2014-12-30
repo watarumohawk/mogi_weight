@@ -54,9 +54,8 @@ function putDataInjqplot(chart, data, data2){
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             yaxis:{
-                min: 0,
                 tickOptions:{
-                    formatString:'%d'
+                    formatString:'%.1fkg'
                 }
             }
         },
