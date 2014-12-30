@@ -20,6 +20,7 @@
 			<%= include 'components/admin_nav_include' %>
 			<table id='new_data_table' class='table table-condensed'>
 				<tr>
+					<img id="lock_img" src="" class="">
 					<td>
 						<form class='form-inline col-xs-5 col-sm-5 col-md-5' role='form'>
 							<div class='form-group'>
@@ -56,8 +57,8 @@
 		<%= include 'components/datepicker_include' %>
 
   		<script language="javascript" type="text/javascript" src="./assets/sprintf.js"></script>
+  		<script language="javascript" type="text/javascript" src="./assets/purl/purl.js"></script>
   		<script language="javascript" type="text/javascript" src="./js/edit.js"></script>
-  		<!-- <script language="javascript" type="text/javascript" src="./assets/footer.js"></script> -->
   		<!-- required scripts END-->
 	</body>
 </html>
