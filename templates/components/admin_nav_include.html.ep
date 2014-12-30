@@ -2,10 +2,10 @@
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="http://projects.watarusekiguchi.com">Wataru's Projects</a>
 			<a class="navbar-brand" href="./">Top</a>
-			<a class="navbar-brand" href="./edit.html">Edit</a>
-			<a class="navbar-brand" href="./saved_data_list.html">list</a>
+			<a class="navbar-brand" href="./admin">Admin</a>
+			<a class="navbar-brand" href="./edit">Edit</a>
+			<a class="navbar-brand" href="./list">List</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 	</div><!-- /.container-fluid -->
