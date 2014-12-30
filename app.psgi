@@ -37,10 +37,28 @@ get '/' => sub {
   $self->render(template =>'index');
 };
 
-get '/weight_edit' => sub {
-  my $self = shift;
+any '/admin' => sub {
+	my $self = shift;
 
-  $self->render(template =>'weight_edit');
+	$self->render(template =>'admin');
+};
+
+any '/edit' => sub {
+	my $self = shift;
+
+	$self->render(template =>'edit');
+};
+
+any '/list' => sub {
+	my $self = shift;
+
+	$self->render(template =>'saved_data_list');
+};
+
+any '/weight_history' => sub {
+	my $self = shift;
+
+	$self->render(template =>'weight_history');
 };
 
 any '/weight_history_json' => sub {
@@ -54,29 +72,11 @@ any '/weight_history_json' => sub {
  	$self->render(json => $output);
 };
 
-any '/weight_history' => sub {
-	my $self = shift;
-
-	$self->render(template =>'weight_history');
-};
-
-any '/saved_data_list' => sub {
-	my $self = shift;
-
-	$self->render(template =>'saved_data_list');
-};
-
 any '/saved_data_list_json' => sub {
 	my $self = shift;
 
 	$output = $db->saved_data_list( );
  	$self->render(json => $output);
-};
-
-any '/edit' => sub {
-	my $self = shift;
-
-	$self->render(template =>'edit');
 };
 
 any '/retrieve' => sub {
