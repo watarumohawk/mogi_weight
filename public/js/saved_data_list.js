@@ -31,9 +31,9 @@ function getDaysList(){
         data: {mode:"saved_data_list", bookvalue: 0},
         dataType: "json",
         success: function(json_data) {
-            // console.log(json_data);
+            console.log(json_data);
             for(var i=0; i < json_data.length; i++){
-                //var atag = $('<a >', { href: "./edit.html?mode=retrieve&date="+json_data[i], text: json_data[i]});
+                // var atag = $('<a >', { href: "./edit.html?mode=retrieve&date="+json_data[i], text: json_data[i]});
                 var atag = $('<a >', { href: "./retrieve?mode=retrieve&date="+json_data[i], text: json_data[i]});
                 var li = $('<li >');
                 atag.appendTo( li );
