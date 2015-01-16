@@ -9,9 +9,10 @@ use Record;
 
 sub new{
 	my $package = shift;
-	my $db_name = File::Spec->catfile( @{$_[0]->{path}} );
+	# my $db_name = File::Spec->catfile( @{$_[0]->{path}} );
+	my $db_name = 'records';
 
-	my $dbh = DBI->connect( "dbi:SQLite:dbname=$db_name", undef, undef, { PrintError => 1 } ) or die;
+	my $dbh = DBI->connect( "dbi:Pg:dbname=$db_name", undef, undef, { PrintError => 1 } ) or die;
 	my $perm = substr( sprintf("%03o", [ stat $db_name ]->[2]) , 3);
 
 	return bless { dbh => $dbh, table => $_[0]->{table}, db_perm => $perm }, $package;

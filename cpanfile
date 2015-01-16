@@ -3,6 +3,8 @@ requires 'File::Spec', '3.47';
 requires 'JSON', '2.90';
 requires 'DBD::SQLite', '1.37';
 requires 'DBI', '1.622';
+requires 'DBD:Pg', '3.5.0';
+
 
 on 'develop' => sub {
 	recommends 'DBD::SQLite';
