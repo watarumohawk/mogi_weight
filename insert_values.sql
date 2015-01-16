@@ -1,3 +1,4 @@
+create table mogiweight (date text, weight text);
 insert into records (date, weight) values
 ('2014/05/19', '82.1'),
 ('2014/05/21', '81.7'),
